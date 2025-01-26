@@ -6,8 +6,30 @@
 </head>
 <body>
 
-	<p>Page test</p>
+	<label for="pageurl">Page url:</label><br>
+	<input type="text" id="pageurl" name="pageurl" placeholder="https://" ><br>
+	<button onclick="clickme()">parse</button>
+	<p id="outbox"></p>
 
 </body>
+<script type"text/javascript">
+
+var urlbox = document.GetElementById("pageurl");
+var outbox = document.GetElementById("outbox");
+
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+
+function clickme()
+{
+	outbox.value = httpGet(urlbox.value);
+}
+
+</script>
 
 </html>
